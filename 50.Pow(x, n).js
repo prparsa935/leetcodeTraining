@@ -27,4 +27,4 @@ var myPow = function (x, n) {
     return 1 / recursivePow(x, n);
   }
 };
-myPow();
+

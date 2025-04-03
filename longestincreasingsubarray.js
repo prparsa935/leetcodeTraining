@@ -9,6 +9,6 @@ const longestSubArray = (arr, end) => {
     }
   }
 
-  return 1 + (prevArr.length ? Math.max(...prevArr.map((index) => longestSubArray(arr, index))) : 0)
+  return Math.max(1 + (prevArr.length ? Math.max(...prevArr.map((index) => longestSubArray(arr, index))) : 0),longestSubArray(arr,end-1))
 };
-console.log(longestSubArray([2,4,1,10,11,1],5))
+console.log(longestSubArray([2,4,5,6,10,1,20],6))

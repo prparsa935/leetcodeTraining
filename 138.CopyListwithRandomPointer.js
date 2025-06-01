@@ -40,5 +40,5 @@ var copyRandomList = function (head) {
     }
     curr = nextCurr;
   }
-  return head;
+  return copyhead;
 };

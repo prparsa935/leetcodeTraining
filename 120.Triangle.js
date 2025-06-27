@@ -3,20 +3,12 @@
  * @return {number}
  */
 var minimumTotal = function (triangle) {
-  let min = +Infinity;
-
-  const dfs = (rowIndex, colIndex, sum) => {
-    checked.add(`${rowIndex},${colIndex}`);
-    if (rowIndex === triangle.length - 1) {
-      if (sum + triangle[rowIndex][colIndex] < min) {
-        min = sum + triangle[rowIndex][colIndex];
-      }
-      return;
+  for (let i = triangle.length - 2; i >= 0; i--) {
+    let row = triangle[i];
+    let prevRow = triangle[i + 1];
+    for (let j = 0; j < row.length; j++) {
+      row[j] = Math.min(prevRow[j], prevRow[j + 1]) + row[j];
     }
-
-    dfs(rowIndex + 1, colIndex, sum + triangle[rowIndex][colIndex]);
-    dfs(rowIndex + 1, colIndex + 1, sum + triangle[rowIndex][colIndex]);
-  };
-  dfs(0, 0, 0);
-  return min;
+  }
+  return triangle[0][0];
 };
